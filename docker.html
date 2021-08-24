@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <h2> Docker GUI </h2>
+
+    <div class="cmd">Enter your command <input id='in1' name='x'>
+    
+    <button onclick="lw();">Run Command</button></div>
+    
+        <div id='d1'>Here we have output</div>
+        
+    </body>
+    
+    <script>
+        function lw() {
+            var xhr = new XMLHttpRequest();
+            var cmd = "sudo " + in1.value
+            xhr.open("GET", "http://192.168.1.20/cgi-bin/a.py?x=" + cmd + "", true,);
+
+            xhr.send();
+            xhr.onload = function () {
+
+                var output = xhr.responseText;
+                document.getElementById("d1").innerHTML = output;
+            }
+        }
+    </script>
+</body>
+
+</html>
